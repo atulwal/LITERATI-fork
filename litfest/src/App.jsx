@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Book from "./components/Registration-Form/Book";
 import Landing from "./pages/Landing";
+import Register from "./pages/Register"
 import Register from "./pages/Register";
 import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
 import "./App.css";
@@ -8,15 +11,14 @@ import Book from "./components/Registrarion-Form/Book";
 
 function App() {
   return (
-    <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Landing />}></Route>
-      <Route path="/" element={<AudioPlayer />}></Route>
-      <Route path="/register" element={<Register />}></Route>
-      <Route path="/register/registration-Form" element={<Book />}>Registration Form</Route>
-    </Routes>
-
-    </BrowserRouter>
+    <Router>
+      <AudioPlayer/>
+      <Routes>
+        <Route path="/" element={<Landing/>}/>
+        <Route path="/register/*" element={<Register />} />
+        <Route path="/book" element={<Book />} />  
+      </Routes>
+    </Router>
   );
 }
 
