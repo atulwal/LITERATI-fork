@@ -1,157 +1,141 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from "react";
+import "./Book.css";
 
-import './Book.css'
-
+const spreads = [
+  {
+    left: [
+      { label: "Email", name: "email", type: "email" },
+      { label: "Password", name: "password", type: "password" },
+      { label: "Name", name: "Name", type: "text" },
+    ],
+    right: [
+      { label: "Phone", name: "phone", type: "tel" },
+      { label: "College", name: "college", type: "text" },
+    ],
+  },
+  {
+    left: [
+      { label: "Year / Class", name: "year", type: "text" },
+      { label: "Major", name: "major", type: "text" },
+    ],
+    right: [
+      { label: "City", name: "city", type: "text" },
+      { label: "State", name: "state", type: "text" },
+    ],
+  },
+];
 
 const Book = () => {
-  const [formData, setFormData] = useState({
-  Name: "",
-  phone: "",
-  college: "",
-  year: "",
-  major: "",
-  city: "",
-  state: ""
-});
+  const [spread, setSpread] = useState(0);
+  const [formData, setFormData] = useState({});
 
-  const handleChange = (e) => {
-  const { name, value } = e.target;
-  setFormData(prev => ({
-    ...prev,
-    [name]: value
-  }));
-};
+  const handleChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = (e) => {
-  e.preventDefault();
-  console.log(formData);
+    e.preventDefault();
+    console.log(formData);
+  };
+
+  const isCurrentSpreadValid = () => {
+  const current = spreads[spread];
+
+  const requiredFields = [
+    ...current.left,
+    ...current.right,
+  ].map((f) => f.name);
+
+  return requiredFields.every(
+    (name) => formData[name] && formData[name].trim() !== ""
+  );
 };
 
 
-
-  
-  
-
   return (
-    <div className='book pt-[72px] max-w-screen h-screen  flex justify-center items-center'>
-      <img src="src/assets/1213.gif" alt="cave gif" className='w-full'/>
-      <div className='absolute h-[100%] flex justify-center items-center '>
-        <img
-          src="src/assets/slazzer-preview-npzbp.svg"
-          alt="book"
-          className="h-full object-contain"
+    <div className="book-container book">
+      <img src="src/assets/1213.gif" className="bg" />
+      <img src="src/assets/slazzer-preview-npzbp.svg" className="book-img" />
+
+      <form className="form" onSubmit={handleSubmit}>
+
+        {/* BOOK SPREAD */}
+        <div className="spread">
+  {/* LEFT PAGE */}
+  <div className="page">
+    {spread === 0 && (
+      <h2 style={{margin:"auto"}} className="heading">Registration Form</h2>
+    )}
+
+    {spreads[spread].left.map((f) => (
+      <div key={f.name} className="field">
+        <label>{f.label}</label>
+        <input
+          type={f.type}
+          name={f.name}
+          value={formData[f.name] || ""}
+          onChange={handleChange}
+          required
+          placeholder={f.label}
         />
-
-      <div className='
-      book-form-wrapper'>
-      
-      <form 
-      onSubmit={handleSubmit}
-      className="
-      Form
-      
-      ">
-      
-      
-      
-       
-      
-      
-
-          <div
-           
-          className="left-page ">
-            <h2 className="text-[1.4em] font-semibold text-center relative top-0 underline">
-              Registration Form
-            </h2>
-            <div>Enter Your Name </div>
-            <input
-              type="text"
-              name="Name"
-              value={formData.Name}
-              onChange={handleChange}
-              placeholder="Enter your name"
-              className=" rounded border border-gray-300 "
-            />
-
-            
-            <div>Enter Your Phone Number  </div>
-            <input
-              type="number"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              placeholder=""
-              className=" rounded border border-gray-300"
-            />
-            <div>College/School Name</div>
-            <input
-              type="text"
-              name="college"
-              value={formData.college}
-              onChange={handleChange}
-              placeholder="Enter full name of your College/School "
-              className=" rounded border border-gray-300"
-            />
-            <div>College Year/ Class</div>
-            <input
-              type="text"
-              name="year"
-              value={formData.year}
-              onChange={handleChange}
-              placeholder="Enter full name of your College/School "
-              className=" rounded border border-gray-300"
-            />
-            <div>Major (NA for School Students)</div>
-            <input
-              type="text"
-              name="major"
-              value={formData.major}
-              onChange={handleChange}
-              placeholder="Enter Major "
-              className=" rounded border border-gray-300"
-            />
-
-
-          </div>
-
-          {/* RIGHT PAGE */}
-          <div
-          
-           className="right-page  ">
-            <div>Town/ City</div>
-            <input
-              type="text"
-              name="city"
-              value={formData.city}
-              onChange={handleChange}
-              placeholder="Enter Town Name/ City Name "
-              className=" rounded border border-gray-300"
-            />
-            <div>State</div>
-            <input
-              type="text"
-              name="state"
-              value={formData.state}
-              onChange={handleChange}
-              placeholder="Enter Your State Name "
-              className=" rounded border border-gray-300"
-            />
-
-            <button type="submit" className='underline m-2 text-[1.4em] hover:text-green-600 cursor-pointer'>Register</button>
-
-
-          </div>
-
-
-        </form>
       </div>
+    ))}
+  </div>
+
+  {/* RIGHT PAGE */}
+  <div className="page">
+    {spread === 0 && (
+      <h2 style={{visibility:"hidden"}} className="heading">Registration Form</h2>
+    )}
+
+    {spreads[spread].right.map((f) => (
+      <div key={f.name} className="field">
+        <label>{f.label}</label>
+        <input
+          type={f.type}
+          name={f.name}
+          value={formData[f.name] || ""}
+          onChange={handleChange}
+          required
+          placeholder={f.label}
+        />
       </div>
+    ))}
+  </div>
+</div>
+
+        {/* NAVIGATION */}
+        <div className="nav">
+          {spread > 0 && (
+            <button
+  type="button"
+  onClick={() => setSpread(spread - 1)}
+>
+  ← Previous
+</button>
+          )}
+
+          {spread < spreads.length - 1 ? (
+            <button
+  type="button"
+  onClick={() => setSpread(spread + 1)}
+  disabled={!isCurrentSpreadValid()}
+  className={!isCurrentSpreadValid() ? "disabled" : ""}
+>
+  Next →
+</button>
+
+          ) : (
+            <button
+  type="submit"
+  disabled={!isCurrentSpreadValid()}
+>
+  Register
+</button>
+          )}
+        </div>
+      </form>
     </div>
+  );
+};
 
-
-  )
-}
-
-export default Book
-
+export default Book;
