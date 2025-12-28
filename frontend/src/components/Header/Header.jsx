@@ -38,7 +38,7 @@ const Header = ({ onRegisterClick }) => {
             
             <div className="modal-body">
               <div className="modal-section">
-                <h2>Intro to Lit-Fest</h2>
+                <h2>Intro to Lit-Fest</h2> 
                 <p>
                   Be ready to hear the echoes of Tarzan as you are about to enter the world of jungle adventure!
                   The wait is finally over, as we are all set to host our first-ever Lit-Fest. Let’s dive right into it.
@@ -96,7 +96,6 @@ const Header = ({ onRegisterClick }) => {
                         <td>Round 2</td>
                         <td><strong>The Pensieve Pitch</strong></td>
                         <td>
-                          <p>Wit and Expression – The Pensive Pitch</p>
                           <p>Where raw wit meets electric expression in a battle of minds, it dives into a shimmering Pensieve brimming with vivid memories and untold stories. It is a space where every word becomes a spark, every pause a canvas, and every thought a ripple across minds. Here, wit is not just cleverness but the ability to turn insight into impact, while expression is the rhythm that gives voice to imagination. The Pensive Pitch invites participants to dance between humor and depth, logic and lyricism, crafting performances that dazzle with brilliance and linger with resonance. It is a celebration of language as both sword and song, where the mind speaks, and the heart listens.</p>
                         </td>
                       </tr>

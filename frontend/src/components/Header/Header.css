@@ -170,7 +170,7 @@
 }
 
 .modal-close:hover {
-  transform: translateY(-50%) scale(1.1) rotate(90deg);
+  transform: translateY(-50%) scale(1.1);
   color: #fff;
   text-shadow: 0 0 10px rgba(127, 255, 161, 0.6);
 }
