@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import "./Header.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.svg";
 
-const Header = ({ onRegisterClick }) => {
+const Header = () => {
+  const navigate = useNavigate();
   const [isEventsOpen, setIsEventsOpen] = useState(false);
 
   const toggleEvents = (e) => {
@@ -23,7 +24,7 @@ const Header = ({ onRegisterClick }) => {
           <a href="#events" onClick={toggleEvents}>Events</a>
           <a href="#speakers">Speakers</a>
           <a href="#timeline">Timeline</a>
-          <a className="register-btn" onClick={onRegisterClick}>Register</a>
+          <a className="register-btn" onClick={() => navigate("/dashboard")}>Register</a>
         </nav>
       </header>
       {isEventsOpen && (

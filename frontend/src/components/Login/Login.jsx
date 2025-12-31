@@ -47,7 +47,7 @@ function Login() {
 
               <p className="register-text">
                 Don’t have an account?{" "}
-                <Link to="book">Register</Link>
+                <Link to="../book">Register</Link>
               </p>
             </form>
           </div>

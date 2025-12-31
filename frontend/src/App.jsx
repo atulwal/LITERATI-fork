@@ -6,6 +6,10 @@ import Register from "./pages/Register"
 import Profile from "./pages/Profile"
 import Login from "./components/Login/Login";
 import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
+import ClosedBook from "./components/ClosedBook/ClosedBook";
+import Leaderboard from "./components/Profile/Leaderboard";
+import Dashboard from "./pages/Dashboard";
+import Prior from "./components/Dashboard/Prior";
 // import "./App.css";
 
 function App() {
@@ -14,11 +18,20 @@ function App() {
       <AudioPlayer/>
       <Routes>
         <Route path="/" element={<Landing />}/>
-        <Route path="/register" element={<Register />}>
-        <Route index element={<Login />} />
+        <Route path="dashboard" element={<Dashboard />}>
+        <Route index element={<Prior />} />
+        </Route>
+        
+       {/* <Route path="/register" element={<Register />}>
+        <Route index element={<ClosedBook />} />
+        <Route path="login" element={<Login />}/>
         <Route path="book" element={<Book />} />
         </Route>
-      </Routes>
+        
+        <Route path="dashboard" element={<Dashboard />}>
+        <Route index element={<Prior />} />
+        </Route> */}
+      </Routes>  
     </Router>
   );
 }

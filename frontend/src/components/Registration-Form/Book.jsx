@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Navigate, useNavigate } from 'react-router-dom';
 import "./Book.css";
 import bgGif from "../../assets/1213.gif";
 import bookSvg from "../../assets/slazzer-preview-npzbp.svg";
@@ -28,6 +29,7 @@ const spreads = [
 ];
 
 const Book = () => {
+  const navigate = useNavigate();
   const [spread, setSpread] = useState(0);
   const [formData, setFormData] = useState({});
 
@@ -130,6 +132,7 @@ const Book = () => {
             <button
   type="submit"
   disabled={!isCurrentSpreadValid()}
+  onClick={() => navigate("/dashboard")}
 >
   Register
 </button>

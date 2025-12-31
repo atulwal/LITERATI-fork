@@ -1,22 +1,23 @@
 import React from 'react'
-import forest from '../assets/forest.jfif'
-import Leaderboard from '../components/Dashboard/Leaderboard'
-import Scoreboard from '../components/Dashboard/Scoreboard'
+import { Outlet } from "react-router-dom";
+import entrance from '../assets/entrance.jfif'
 
 function Dashboard() {
   return (
-    <div className="relative min-h-screen w-full">
+    <div className="relative min-h-screen w-full overflow-hidden">
       
-      <div
-        className="absolute shrink-0 inset-0 bg-cover bg-center backdrop-blur-md"
-        style={{ backgroundImage: `url(${download})` }}
-      />
+      <img
+  src={entrance}
+  alt="test"
+  className="absolute inset-0 w-full h-full object-cover"
+/>
+
       
-      <div className="absolute  bg-black/40 " />
+      <div className="absolute inset-0 bg-black/40 " />
+
       
       <div className="relative z-10 p-20">
-        <Leaderboard />
-        <Scoreboard />
+        <Outlet />
       </div>
 
     </div>

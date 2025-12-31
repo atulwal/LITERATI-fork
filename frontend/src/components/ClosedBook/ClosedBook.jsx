@@ -1,7 +1,7 @@
 import React from 'react'
 import { Navigate, useNavigate } from 'react-router-dom';
 
-function ClosedBook({onOpen}) {
+function ClosedBook() {
   const navigate = useNavigate()
   return (
     <div className="relative min-h-[100dvh] w-full overflow-hidden bg-black">
@@ -52,7 +52,7 @@ function ClosedBook({onOpen}) {
         <img
           src="/book.png"
           alt="book"
-          onClick={() => navigate("/register/login")}
+          onClick={() => navigate("login")}
           className="
           w-40
           transition-all
