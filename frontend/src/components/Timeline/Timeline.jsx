@@ -2,16 +2,20 @@ import React, { useEffect, useRef } from "react";
 import "./Timeline.css";
 
 const data = [
-  { event: "EVENT 1", date: "28 February" },
-  { event: "EVENT 2", date: "1 March" },
-  { event: "EVENT 3", date: "2 March" },
-  { event: "EVENT 4", date: "3 March" },
-  { event: "EVENT 5", date: "4 March" },
-  { event: "EVENT 6", date: "5 March" },
-  { event: "EVENT 7", date: "6 March" },
-  { event: "EVENT 8", date: "7 March" },
-  { event: "EVENT 9", date: "8 March" },
-  { event: "EVENT 10", date: "9 March" },
+  { event: "Inauguration", date: "Coming Soon" },
+  { event: "Speaker Session", date: "Coming Soon" },
+  { event: "Main Quest - 1", date: "Coming Soon" },
+  { event: "Side Quest - 1", date: "Coming Soon" },
+  { event: "Side Quest - 2", date: "Coming Soon" },
+  { event: "Main Quest - 2", date: "Coming Soon" },
+  { event: "Quest for Seniors", date: "Coming Soon" },
+  { event: "Quest for our juniors", date: "Coming Soon" },
+  { event: "MUN", date: "Coming Soon" },
+  { event: "Side Quest - 3", date: "Coming Soon" },
+  { event: "Side Quest - 4", date: "Coming Soon" },
+  { event: "Main Quest - 3", date: "Coming Soon" },
+  { event: "Grand Finale", date: "Coming Soon" },
+  { event: "Valedictory and Prize Distribution", date: "Coming Soon" }
 ];
 
 const Timeline = () => {
