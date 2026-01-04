@@ -13,6 +13,8 @@ import Prior from "./components/Dashboard/Prior";
 // import "./App.css";
 
 function App() {
+  
+
   return (
     <Router>
       <AudioPlayer/>
@@ -22,10 +24,10 @@ function App() {
         <Route index element={<Prior />} />
         </Route>
         
+        <Route path="/book" element={<Book />} />
+        <Route path="/login" element={<Login />}/>
        {/* <Route path="/register" element={<Register />}>
         <Route index element={<ClosedBook />} />
-        <Route path="login" element={<Login />}/>
-        <Route path="book" element={<Book />} />
         </Route>
         
         <Route path="dashboard" element={<Dashboard />}>

@@ -23,12 +23,12 @@ const Profile = () => {
       {/* Main Content */}
       <main className="profile-content">
         <ProfileHeader />
-        <ScoreBreakdown />
-        <QuestOverview />
+        {/* <ScoreBreakdown /> */}
+        {/* <QuestOverview /> */}
         
         <div className="bottom-grid">
-          <ScoreHistory />
-          <Leaderboard />
+          {/* <ScoreHistory /> */}
+          {/* <Leaderboard /> */}
         </div>
       </main>
     </div>

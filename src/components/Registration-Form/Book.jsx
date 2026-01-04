@@ -3,13 +3,14 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import "./Book.css";
 import bgGif from "../../assets/1213.gif";
 import bookSvg from "../../assets/slazzer-preview-npzbp.svg";
+import axios from "axios";
 
 const spreads = [
   {
     left: [
       { label: "Email", name: "email", type: "email" },
       { label: "Password", name: "password", type: "password" },
-      { label: "Name", name: "Name", type: "text" },
+      { label: "Name", name: "name", type: "text" },
     ],
     right: [
       { label: "Phone", name: "phone", type: "tel" },
@@ -36,10 +37,44 @@ const Book = () => {
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData);
-  };
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    const response = await axios.post(
+      "http://localhost:5000/api/auth/register",
+      formData,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    const data = response.data;
+
+    console.log("Registration successful:", data);
+
+    // Store token
+    localStorage.setItem("token", data.token);
+
+    // Navigate ONLY after success
+    navigate("/dashboard");
+
+  } catch (error) {
+    // Axios error handling
+    const message =
+      error.response?.data?.msg || 
+      error.message || 
+      "Registration failed";
+
+    console.error("Registration error:", message);
+    alert(message);
+  }
+};
+
+
 
   const isCurrentSpreadValid = () => {
   const current = spreads[spread];
@@ -132,7 +167,7 @@ const Book = () => {
             <button
   type="submit"
   disabled={!isCurrentSpreadValid()}
-  onClick={() => navigate("/dashboard")}
+  
 >
   Register
 </button>
