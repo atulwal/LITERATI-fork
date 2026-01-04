@@ -13,24 +13,35 @@ import FAQ from "../components/FAQ/FAQ";
 import Footer from "../components/Footer/Footer";
 import "../../src/index.css"
 import "../../src/App.css"
+import AnimatedSection from "./AnimatedSection";
 
-const Landing = ({onRegisterClick}) => {
-  const navigate = useNavigate()
+const pageVariants = {
+  initial: { opacity: 0, y: 10 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -10 }
+};
+
+const Landing = ({ onRegisterClick }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="landing-container">
       <Header onRegisterClick={() => navigate("/register")} />
-      <Hero />
-      <About />
-      <Events />
-      <Speakers />
-      <Timeline />
-      <Sponsors />
-      <Gallery />
-      <Stats />
-      <FAQ />
+
+      <AnimatedSection><Hero /></AnimatedSection>
+      <AnimatedSection><About /></AnimatedSection>
+      <AnimatedSection><Events /></AnimatedSection>
+      <AnimatedSection><Speakers /></AnimatedSection>
+      <AnimatedSection><Timeline /></AnimatedSection>
+      <AnimatedSection><Sponsors /></AnimatedSection>
+      <AnimatedSection><Gallery /></AnimatedSection>
+      <AnimatedSection><Stats /></AnimatedSection>
+      <AnimatedSection><FAQ /></AnimatedSection>
+
       <Footer />
     </div>
   );
 };
+
 
 export default Landing;
