@@ -8,10 +8,9 @@ import Profile from "./pages/Profile"
 import Login from "./components/Login/Login";
 import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
 import ClosedBook from "./components/ClosedBook/ClosedBook";
-import Leaderboard from "./components/Profile/Leaderboard";
+import Leaderboard from "./components/Dashboard/Leaderboard";
 import Dashboard from "./pages/Dashboard";
 import Admin from "./pages/admin"
-import Prior from "./components/Dashboard/Prior";
 // import "./App.css";
 
 const AnimatedRoutes = () => {
@@ -22,16 +21,15 @@ const AnimatedRoutes = () => {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Landing />} />
 
-        <Route path="/dashboard" element={<Dashboard />}>
-          <Route index element={<Prior />} />
+        <Route path="/register" element={<Register />}>
+        <Route index element={<ClosedBook />} />
+        <Route path="login" element={<Login />} />
+        <Route path="book" element={<Book />} />
         </Route>
 
-        {/* <Route path="/register" element={<Register />}>
-        <Route index element={<ClosedBook />} />
-        <Route path="login" element={<Login />}/>
-        <Route path="book" element={<Book />} />
-      </Route> 
-      */}
+        <Route path="dashboard" element={<Dashboard />}>
+        <Route index element={<Leaderboard />} />
+        </Route>
 
         <Route path="/admin" element={<Admin />} />
       </Routes>
