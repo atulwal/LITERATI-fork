@@ -30,7 +30,7 @@ const Timeline = () => {
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.3 }
     );
 
     itemsRef.current.forEach((item) => {
@@ -45,19 +45,21 @@ const Timeline = () => {
       <h2>TIMELINE</h2>
 
       <div className="timeline-wrapper">
-      
-        <svg className="curve" viewBox="0 0 200 1400">
+        <svg className="curve" viewBox="0 0 100 100" preserveAspectRatio="none">
           <path
             d="
-              M100 0
-              C20 150, 180 300, 100 450
-              C20 600, 180 750, 100 900
-              C20 1050, 180 1200, 100 1400
+              M50,0 
+              C10,5 90,10 50,15
+              C10,20 90,25 50,30
+              C10,35 90,40 50,45
+              C10,50 90,55 50,60
+              C10,65 90,70 50,75
+              C10,80 90,85 50,90
+              C10,95 90,98 50,100
             "
           />
         </svg>
 
-       
         <div className="timeline-content">
           {data.map((item, index) => (
             <div
