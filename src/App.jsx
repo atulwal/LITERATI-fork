@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 import Book from "./components/Registration-Form/Book";
 import Landing from "./pages/Landing";
 import Register from "./pages/Register"
@@ -11,6 +12,28 @@ import Leaderboard from "./components/Profile/Leaderboard";
 import Dashboard from "./pages/Dashboard";
 import Prior from "./components/Dashboard/Prior";
 // import "./App.css";
+
+const AnimatedRoutes = () => {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Landing />} />
+        
+        <Route path="dashboard" element={<Dashboard />}>
+          <Route index element={<Prior />} />
+        </Route>
+        {/* <Route path="/register" element={<Register />}>
+          <Route index element={<ClosedBook />} />
+          <Route path="login" element={<Login />}/>
+          <Route path="book" element={<Book />} />
+        </Route> 
+        */}
+      </Routes>
+    </AnimatePresence>
+  );
+};
 
 function App() {
   
