@@ -1,16 +1,43 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Login.css";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
+
 
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(email, password);
-  };
+
+
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  console.log("Login button clicked");
+
+  try {
+    const res = await axios.post(
+      "http://localhost:5000/api/auth/login",
+      { email, password }
+    );
+
+    console.log("Backend response:", res.data);
+
+    localStorage.setItem("token", res.data.token);
+    navigate("/dashboard");
+  } catch (err) {
+  const message =
+    err.response?.data?.message || "Something went wrong";
+
+  setError(message);
+}
+
+};
+
 
   return (
     <div className="login-root">
@@ -30,7 +57,11 @@ function Login() {
                 type="email"
                 placeholder="Enter Email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  setError("");
+                }}
+
               />
 
               <label>Password</label>
@@ -42,6 +73,7 @@ function Login() {
               />
 
               <a className="forgot-password">Forgot Password?</a>
+              {error && <p className="error-text">{error}</p>}
 
               <button type="submit">Login</button>
 

@@ -25,8 +25,8 @@ function App() {
        {/* <Route path="/register" element={<Register />}>
         <Route index element={<ClosedBook />} />
         <Route path="login" element={<Login />}/>
-        <Route path="book" element={<Book />} />
         </Route>
+        <Route path="book" element={<Book />} />
         
         <Route path="dashboard" element={<Dashboard />}>
         <Route index element={<Prior />} />

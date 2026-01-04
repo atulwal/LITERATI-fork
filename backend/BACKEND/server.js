@@ -13,6 +13,8 @@ mongoose.connect(process.env.MONGO_URI)
   .catch(err => console.error('MongoDB Error:', err));
 
 app.use('/api/auth', require('./routes/auth'));
+app.use('/api/admin', require('./routes/admin'));
+app.use('/api/user', require('./routes/user'));
 
 app.get('/', (req, res) => {
   res.json({ msg: 'Competition Backend Running!' });
