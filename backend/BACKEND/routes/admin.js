@@ -52,20 +52,24 @@ router.get(
 );
 
 router.delete(
-  '/points/:pointId',
+  '/users/:userId/points',
   authenticate,
   authorize(['admin']),
   async (req, res) => {
     try {
-      const point = await Point.findById(req.params.pointId);
+     
+      const point = await Point.findOne({ userId: req.params.userId })
+        .sort({ createdAt: -1 });
+
       if (!point) {
-        return res.status(404).json({ success: false, msg: 'Point not found' });
+        return res.status(404).json({
+          success: false,
+          msg: 'No points left to delete for this user'
+        });
       }
 
-   
       const STEP = 5;
 
-      
       if (point.points < STEP) {
         return res.status(400).json({
           success: false,
@@ -73,7 +77,7 @@ router.delete(
         });
       }
 
-      const user = await User.findById(point.userId);
+      const user = await User.findById(req.params.userId);
       if (!user) {
         return res.status(404).json({ success: false, msg: 'User not found' });
       }
@@ -83,7 +87,6 @@ router.delete(
 
       if (user.totalPoints < 0) user.totalPoints = 0;
 
-     
       if (point.points === 0) {
         await point.deleteOne();
       } else {
@@ -103,5 +106,6 @@ router.delete(
     }
   }
 );
+
 
 module.exports = router;
