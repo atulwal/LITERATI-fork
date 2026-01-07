@@ -173,7 +173,7 @@ button {
 /* Book image (kept exactly as your original logic) */
 .book-img {
   position: relative;
-  top:7%;
+  top:5%;
   height: 90%;
   width: auto;
   z-index: 1;
@@ -266,8 +266,10 @@ button:disabled {
 /* Mobile: stack pages */
 @media (max-width: 768px) {
   .form {
-    height: 70%;
-    aspect-ratio: 491.92 / 375.32;
+    top: 20%;
+    left: 10%;
+    width: 80%;
+    aspect-ratio: 375.32 / 491.92;
   }
 
   .spread {
@@ -277,6 +279,7 @@ button:disabled {
 
   .book-img {
     height: 75%;
+    left: 20vh;
   }
 }
 
