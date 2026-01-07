@@ -62,20 +62,40 @@ router.delete(
         return res.status(404).json({ success: false, msg: 'Point not found' });
       }
 
+   
+      const STEP = 5;
+
+      
+      if (point.points < STEP) {
+        return res.status(400).json({
+          success: false,
+          msg: 'Not enough points to delete'
+        });
+      }
+
       const user = await User.findById(point.userId);
       if (!user) {
         return res.status(404).json({ success: false, msg: 'User not found' });
       }
 
-      user.totalPoints -= point.points;
+      point.points -= STEP;
+      user.totalPoints -= STEP;
+
       if (user.totalPoints < 0) user.totalPoints = 0;
 
+     
+      if (point.points === 0) {
+        await point.deleteOne();
+      } else {
+        await point.save();
+      }
+
       await user.save();
-      await point.deleteOne();
 
       res.json({
         success: true,
-        msg: 'Points deleted successfully',
+        msg: `-${STEP} points deleted`,
+        remainingInThisEntry: point.points,
         newTotal: user.totalPoints
       });
     } catch (err) {
