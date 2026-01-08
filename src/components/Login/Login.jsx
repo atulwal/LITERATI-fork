@@ -107,7 +107,8 @@ function Login() {
 
               <button type="submit">Login</button>
 
-              <GoogleLogin  
+              <GoogleLogin 
+              className="google-button" 
               onSuccess={(handleGoogleLogin)} 
                   
               onError={(err)=>{console.log("login failed")}} />
