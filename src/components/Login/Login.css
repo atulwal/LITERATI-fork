@@ -1,4 +1,6 @@
-
+/* =========================
+   ROOT & BACKGROUND
+========================= */
 .login-root {
   position: relative;
   width: 100vw;
@@ -24,7 +26,9 @@
   object-fit: cover;
 }
 
-
+/* =========================
+   CENTERING
+========================= */
 .login-center {
   position: relative;
   z-index: 10;
@@ -35,7 +39,9 @@
   justify-content: center;
 }
 
-
+/* =========================
+   BOOK CONTAINER (CRITICAL)
+========================= */
 .login-book-wrapper {
   position: relative;
   display: flex;
@@ -78,7 +84,6 @@
   margin-bottom: 0.5em;
 }
 
-
 .login-form {
   color: black;
    position: absolute;
@@ -99,11 +104,9 @@
   justify-content: center;
 }
 
-
 .login-form label {
   font-weight: 600;
 }
-
 
 .login-form input {
   padding: 6px 8px;
@@ -115,33 +118,35 @@
 }
 
 input::placeholder {
-    color: whitesmoke;
-    font-style: italic;
-}
-
-
-.forgot-password {
-  font-size: 0.875rem;
+  color: whitesmoke;
   font-style: italic;
-  text-decoration: underline;
-  text-align: right;
-  cursor: pointer;
-  margin-bottom: 10px;
 }
-
 
 .login-form button {
-  margin-bottom: 1em;
-  text-align: center;
+  margin-top: 16px;
+  padding: 8px;
   background-color: #5A2D0C;
   border-radius: 25px;
   color: #F5E6C8;
   cursor: pointer;
-  margin-top: 16px;
-  padding: 8px;
-  text-decoration: none;
 }
 
+/* Google button centering */
+.login-form > div {
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+}
+
+/* =========================
+   TEXT & LINKS
+========================= */
+.error-text {
+  color: #ff4d4f;
+  font-size: 14px;
+  margin-bottom: 10px;
+  text-align: center;
+}
 
 .register-text {
   font-size: 0.875rem;
@@ -151,7 +156,8 @@ input::placeholder {
   font-weight: 800;
 }
 
-.register-text span {
+.register-text span,
+.register-text a {
   font-weight: 600;
   text-decoration: underline;
   cursor: pointer;
