@@ -11,6 +11,7 @@ import ClosedBook from "./components/ClosedBook/ClosedBook";
 import Leaderboard from "./components/Dashboard/Leaderboard";
 import Dashboard from "./pages/Dashboard";
 import Admin from "./pages/admin"
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 // import "./App.css";
 
 const AnimatedRoutes = () => {
@@ -27,7 +28,9 @@ const AnimatedRoutes = () => {
         <Route path="book" element={<Book />} />
         </Route>
 
-        <Route path="dashboard" element={<Dashboard />}>
+        <Route path="dashboard" element={<ProtectedRoute>
+      <Dashboard />
+    </ProtectedRoute>}>
         <Route index element={<Leaderboard />} />
         </Route>
 
