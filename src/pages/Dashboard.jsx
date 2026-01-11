@@ -1,31 +1,24 @@
-import React from 'react'
-import { Outlet } from "react-router-dom"
-import Profile from './Profile'
-import forest from '../assets/forest.jfif'
-import Header from '../components/Header/Header'
-import '../styles/Dashboard.css'
-import LeaderboardProxy from './LeaderboardProxy'
-
+import React from "react";
+import LeaderboardProxy from "./LeaderboardProxy";
+import forest from "../assets/forest.jfif";
+import "../styles/Dashboard.css";
 
 function Dashboard() {
   return (
     <div className="dashboard">
-      
       <img
         src={forest}
-        alt="test"
+        alt="background"
         className="dashboard-bg"
       />
 
       <div className="dashboard-overlay" />
-      <LeaderboardProxy />
-      {/*<div className="dashboard-content">
-        <Profile />
-        <Outlet />
-      </div> */}
 
+      <div className="dashboard-content">
+        <LeaderboardProxy />
+      </div>
     </div>
-  )
+  );
 }
 
-export default Dashboard
+export default Dashboard;

@@ -6,7 +6,9 @@ function LeaderboardProxy() {
       <div style={styles.card}>
         <h1 style={styles.title}>🏆 Leaderboard</h1>
         <p style={styles.text}>The leaderboard will be live soon.</p>
-       
+        <p style={styles.subText}>
+          We’re working on it — check back shortly!
+        </p>
       </div>
     </div>
   );
@@ -14,18 +16,17 @@ function LeaderboardProxy() {
 
 const styles = {
   container: {
-    minHeight: "70vh",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
   },
   card: {
-    background: "#111",
+    background: "rgba(17, 17, 17, 0.9)",
     padding: "40px",
-    borderRadius: "12px",
+    borderRadius: "14px",
     textAlign: "center",
-    boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
-    maxWidth: "400px",
+    boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
+    maxWidth: "420px",
     width: "90%",
   },
   title: {
@@ -36,6 +37,11 @@ const styles = {
   text: {
     fontSize: "18px",
     color: "#ccc",
+  },
+  subText: {
+    marginTop: "8px",
+    fontSize: "14px",
+    color: "#999",
   },
 };
 
