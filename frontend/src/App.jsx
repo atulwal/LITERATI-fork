@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { use, useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Book from "./components/Registration-Form/Book";
@@ -13,7 +13,6 @@ import Leaderboard from "./components/Profile/Leaderboard";
 import Dashboard from "./pages/Dashboard.jsx";
 import Scoreboard from "./components/Dashboard/Scoreboard";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
-// import AdminLogin from "./components/admin/adminLogin"; // Uncomment if needed
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -40,6 +39,20 @@ const AnimatedRoutes = () => {
 };
 
 function App() {
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    const API = import.meta.env.VITE_API_URL;
+
+    fetch(`${API}/api`)
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        setMessage(data.message);
+      })
+      .catch(err => console.error(err));
+  }, []);
+
   return (
     <Router>
       <AudioPlayer />
