@@ -33,7 +33,18 @@ const spreads = [
 const Book = () => {
   const navigate = useNavigate();
   const [spread, setSpread] = useState(0);
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+  email: "",
+  password: "",
+  name: "",
+  phone: "",
+  college: "",
+  year: "",
+  major: "",
+  city: "",
+  state: "",
+});
+
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
