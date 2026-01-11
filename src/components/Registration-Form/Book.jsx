@@ -12,6 +12,8 @@ const spreads = [
       { label: "Email", name: "email", type: "email" },
       { label: "Password", name: "password", type: "password" },
       { label: "Name", name: "name", type: "text" },
+      { label: "Year / Class", name: "year", type: "text" }, 
+      { label: "Major", name: "major", type: "text" },
     ],
     right: [
       { label: "Phone", name: "phone", type: "tel" },
