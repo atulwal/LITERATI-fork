@@ -6,6 +6,7 @@ import ScoreHistory from '../components/Profile/ScoreHistory';
 import Leaderboard from '../components/Profile/Leaderboard';
 import '../styles/Profile.css';
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FaCrown, FaUserCircle } from "react-icons/fa";
 const Profile = () => {
   return (
@@ -16,9 +17,12 @@ const Profile = () => {
           <FaUserCircle className='profile-icon' />
           <h1>YOUR PROFILE</h1>
         </div>
-        <Link to="/">
-          <button className="logout-button">Log Out</button>
-        </Link>
+        <button
+          className="logout-button"
+          onClick={() => navigate("/")}
+        >
+          Log Out
+        </button>
       </div>
       <main className="profile-content">
         <ProfileHeader />
