@@ -8,7 +8,7 @@ import Profile from "./pages/Profile.jsx";
 import Login from "./components/Login/Login";
 import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
 import ClosedBook from "./components/ClosedBook/ClosedBook";
-import AdminLogin from "./components/admin/AdminLogin";
+import AdminLogin from "./components/admin/adminLogin.jsx";
 import Leaderboard from "./components/Profile/Leaderboard";
 import Dashboard from "./pages/Dashboard.jsx";
 import Scoreboard from "./components/Dashboard/Scoreboard";
