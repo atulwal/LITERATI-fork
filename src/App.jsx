@@ -1,19 +1,18 @@
-import React, { useState } from "react";
+import React, { use, useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Book from "./components/Registration-Form/Book";
-import Landing from "./pages/Landing";
-import Register from "./pages/Register"
-import Profile from "./pages/Profile"
+import Landing from "./pages/Landing.jsx";
+import Register from "./pages/Register.jsx";
+import Profile from "./pages/Profile.jsx";
 import Login from "./components/Login/Login";
 import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
 import ClosedBook from "./components/ClosedBook/ClosedBook";
-import Leaderboard from "./components/Dashboard/Leaderboard";
-import Dashboard from "./pages/Dashboard";
-import Admin from "./pages/admin"
-import AdminLogin from "./components/admin/adminLogin";
+import AdminLogin from "./components/admin/adminLogin.jsx";
+import Leaderboard from "./components/Profile/Leaderboard";
+import Dashboard from "./pages/Dashboard.jsx";
+import Scoreboard from "./components/Dashboard/Scoreboard";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
-// import "./App.css";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -24,25 +23,36 @@ const AnimatedRoutes = () => {
         <Route path="/" element={<Landing />} />
 
         <Route path="/register" element={<Register />}>
-        <Route index element={<ClosedBook />} />
-        <Route path="login" element={<Login />} />
-        <Route path="book" element={<Book />} />
+          <Route index element={<ClosedBook />} />
+          <Route path="login" element={<Login />} />
+          <Route path="book" element={<Book />} />
         </Route>
 
-        <Route path="dashboard" element={<ProtectedRoute>
-      <Dashboard />
-    </ProtectedRoute>}>
-        <Route index element={<Leaderboard />} />
+        <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>}>
+          <Route index element={<Leaderboard />} />
         </Route>
 
         <Route path="/adminlogin" element={<AdminLogin />} />
       </Routes>
     </AnimatePresence>
   );
-
 };
 
 function App() {
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    const API = import.meta.env.VITE_API_URL;
+
+    fetch(`${API}/api`)
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        setMessage(data.message);
+      })
+      .catch(err => console.error(err));
+  }, []);
+
   return (
     <Router>
       <AudioPlayer />
