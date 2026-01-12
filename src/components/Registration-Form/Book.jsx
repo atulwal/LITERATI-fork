@@ -12,6 +12,8 @@ const spreads = [
       { label: "Email", name: "email", type: "email" },
       { label: "Password", name: "password", type: "password" },
       { label: "Name", name: "name", type: "text" },
+      { label: "Year / Class", name: "year", type: "text" }, 
+      { label: "Major", name: "major", type: "text" },
     ],
     right: [
       { label: "Phone", name: "phone", type: "tel" },
@@ -19,10 +21,7 @@ const spreads = [
     ],
   },
   {
-    left: [
-      { label: "Year / Class", name: "year", type: "text" },
-      { label: "Major", name: "major", type: "text" },
-    ],
+    left: [],
     right: [
       { label: "City", name: "city", type: "text" },
       { label: "State", name: "state", type: "text" },
@@ -33,7 +32,18 @@ const spreads = [
 const Book = () => {
   const navigate = useNavigate();
   const [spread, setSpread] = useState(0);
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+  email: "",
+  password: "",
+  name: "",
+  phone: "",
+  college: "",
+  year: "",
+  major: "",
+  city: "",
+  state: "",
+});
+
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -41,6 +51,8 @@ const Book = () => {
 
 const handleSubmit = async (e) => {
   e.preventDefault();
+  
+console.log("Form Data being sent:", formData);
 try {
   const API = import.meta.env.VITE_API_URL;
 
@@ -144,7 +156,7 @@ try {
 </div>
 
         {/* NAVIGATION */}
-        <div className="nav">
+        <div className="register-nav">
           {spread > 0 && (
             <button
   type="button"
