@@ -38,9 +38,7 @@ function Admin() {
 
   const visibleParticipants = useMemo(() => {
     return participants
-      .filter((p) =>
-        p.name.toLowerCase().includes(search.toLowerCase())
-      )
+      .filter((p) => p.name.toLowerCase().includes(search.toLowerCase()))
       .sort((a, b) => b.totalPoints - a.totalPoints);
   }, [participants, search]);
 
