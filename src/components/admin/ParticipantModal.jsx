@@ -3,12 +3,9 @@ import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import "./admin.css";
 
-export default function ParticipantModal({
-  participant,
-  onClose,
-  onRefresh,
-}) {
+export default function ParticipantModal({ participant, onClose, onRefresh }) {
   const modalRef = useRef(null);
+
   const [eventCode, setEventCode] = useState("");
   const [points, setPoints] = useState("");
   const [reason, setReason] = useState("");
@@ -18,7 +15,6 @@ export default function ParticipantModal({
   if (!participant) return null;
 
   const { _id, name, totalPoints, eventScores } = participant;
-
 
   useEffect(() => {
     const handleKey = (e) => {
@@ -54,8 +50,8 @@ export default function ParticipantModal({
         }
       );
 
-      onRefresh();  
-      onClose();     
+      onRefresh();   // reload leaderboard
+      onClose();     // close modal
     } catch (err) {
       console.error(err);
       setError(err.response?.data?.msg || "Failed to update points");
@@ -65,7 +61,7 @@ export default function ParticipantModal({
   };
 
   return (
-    <div className="modal-overlay" role="dialog" aria-modal="true">
+    <div className="modal-overlay">
       <div className="modal-backdrop" onClick={onClose} />
 
       <div
@@ -78,19 +74,16 @@ export default function ParticipantModal({
             <Trophy size={18} />
             <h3>{name}</h3>
           </div>
-
           <button className="modal-close-btn" onClick={onClose}>
             <X size={18} />
           </button>
         </div>
 
- 
         <div className="total-points-card">
           <span>Total Points</span>
           <strong>{totalPoints}</strong>
         </div>
 
-        
         <div className="event-score-list">
           <h4>Event Scores</h4>
           {eventScores.length === 0 && <p>No events yet</p>}
@@ -102,7 +95,6 @@ export default function ParticipantModal({
           ))}
         </div>
 
-        
         <div className="update-points-form">
           <h4>Add / Update Points</h4>
 
