@@ -111,8 +111,17 @@ body {
 }
 
 .search-icon {
+  width: 18px;
+  height: 18px;
   color: var(--text-muted);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
 }
+
 
 .participant-list {
   display: flex;
