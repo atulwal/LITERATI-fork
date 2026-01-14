@@ -237,7 +237,7 @@ button {
 }
 
 .field label {
-  display: block;        /* ⬅️ forces label to its own line */
+  display: block;      
   margin-bottom: 0.2em;
 }
 
@@ -308,3 +308,27 @@ button:disabled {
 }
 
 
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 60px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 13px;
+  cursor: pointer;
+  color: #000000;
+  user-select: none;
+}
+
+.toggle-password:hover {
+  color: #000;
+}

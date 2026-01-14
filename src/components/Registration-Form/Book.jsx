@@ -12,7 +12,7 @@ const spreads = [
       { label: "Email", name: "email", type: "email" },
       { label: "Password", name: "password", type: "password" },
       { label: "Name", name: "name", type: "text" },
-      { label: "Year / Class", name: "year", type: "text" }, 
+      { label: "Year / Class", name: "year", type: "text" },
       { label: "Major", name: "major", type: "text" },
     ],
     right: [
@@ -32,75 +32,76 @@ const spreads = [
 const Book = () => {
   const navigate = useNavigate();
   const [spread, setSpread] = useState(0);
+  const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
-  email: "",
-  password: "",
-  name: "",
-  phone: "",
-  college: "",
-  year: "",
-  major: "",
-  city: "",
-  state: "",
-});
+    email: "",
+    password: "",
+    name: "",
+    phone: "",
+    college: "",
+    year: "",
+    major: "",
+    city: "",
+    state: "",
+  });
 
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  
-console.log("Form Data being sent:", formData);
-try {
-  const API = import.meta.env.VITE_API_URL;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  const response = await axios.post(
-    `${API}/api/auth/register`,
-    formData,
-    {
-      headers: {
-        "Content-Type": "application/json",
-      },
+    console.log("Form Data being sent:", formData);
+    try {
+      const API = import.meta.env.VITE_API_URL;
+
+      const response = await axios.post(
+        `${API}/api/auth/register`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const data = response.data;
+
+      console.log("Registration successful:", data);
+
+      // Store token
+      localStorage.setItem("token", data.token);
+
+      // Navigate ONLY after success
+      navigate("/");
+    } catch (error) {
+      // Axios error handling
+      const message =
+        error.response?.data?.msg ||
+        error.message ||
+        "Registration failed";
+
+      console.error("Registration error:", message);
+      alert(message);
     }
-  );
-
-  const data = response.data;
-
-  console.log("Registration successful:", data);
-
-  // Store token
-  localStorage.setItem("token", data.token);
-
-  // Navigate ONLY after success
-  navigate("/");
-} catch (error) {
-    // Axios error handling
-    const message =
-      error.response?.data?.msg || 
-      error.message || 
-      "Registration failed";
-
-    console.error("Registration error:", message);
-    alert(message);
-  }
-};
+  };
 
 
 
   const isCurrentSpreadValid = () => {
-  const current = spreads[spread];
+    const current = spreads[spread];
 
-  const requiredFields = [
-    ...current.left,
-    ...current.right,
-  ].map((f) => f.name);
+    const requiredFields = [
+      ...current.left,
+      ...current.right,
+    ].map((f) => f.name);
 
-  return requiredFields.every(
-    (name) => formData[name] && formData[name].trim() !== ""
-  );
-};
+    return requiredFields.every(
+      (name) => formData[name] && formData[name].trim() !== ""
+    );
+  };
 
 
   return (
@@ -112,78 +113,99 @@ try {
 
         {/* BOOK SPREAD */}
         <div className="spread">
-  {/* LEFT PAGE */}
-  <div className="page">
-    {spread === 0 && (
-      <h2 style={{margin:"auto"}} className="heading">Registration Form</h2>
-    )}
+          {/* LEFT PAGE */}
+          <div className="page">
+            {spread === 0 && (
+              <h2 style={{ margin: "auto" }} className="heading">Registration Form</h2>
+            )}
 
-    {spreads[spread].left.map((f) => (
-      <div key={f.name} className="field">
-        <label>{f.label}</label>
-        <input
-          type={f.type}
-          name={f.name}
-          value={formData[f.name] || ""}
-          onChange={handleChange}
-          required
-          placeholder={f.label}
-        />
-      </div>
-    ))}
-  </div>
+            {spreads[spread].left.map((f) => (
+              <div key={f.name} className="field">
+                <label>{f.label}</label>
 
-  {/* RIGHT PAGE */}
-  <div className="page">
-    {spread === 0 && (
-      <h2 style={{visibility:"hidden"}} className="heading">Registration Form</h2>
-    )}
+                {f.name === "password" ? (
+                  <div className="password-wrapper">
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      name={f.name}
+                      value={formData[f.name] || ""}
+                      onChange={handleChange}
+                      required
+                      placeholder={f.label}
+                    />
 
-    {spreads[spread].right.map((f) => (
-      <div key={f.name} className="field">
-        <label>{f.label}</label>
-        <input
-          type={f.type}
-          name={f.name}
-          value={formData[f.name] || ""}
-          onChange={handleChange}
-          required
-          placeholder={f.label}
-        />
-      </div>
-    ))}
-  </div>
-</div>
+                    <span
+                      className="toggle-password"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? "Hide" : "Show"}
+                    </span>
+                  </div>
+                ) : (
+                  <input
+                    type={f.type}
+                    name={f.name}
+                    value={formData[f.name] || ""}
+                    onChange={handleChange}
+                    required
+                    placeholder={f.label}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* RIGHT PAGE */}
+          <div className="page">
+            {spread === 0 && (
+              <h2 style={{ visibility: "hidden" }} className="heading">Registration Form</h2>
+            )}
+
+            {spreads[spread].right.map((f) => (
+              <div key={f.name} className="field">
+                <label>{f.label}</label>
+                <input
+                  type={f.type}
+                  name={f.name}
+                  value={formData[f.name] || ""}
+                  onChange={handleChange}
+                  required
+                  placeholder={f.label}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
 
         {/* NAVIGATION */}
         <div className="register-nav">
           {spread > 0 && (
             <button
-  type="button"
-  onClick={() => setSpread(spread - 1)}
->
-  ← Previous
-</button>
+              type="button"
+              onClick={() => setSpread(spread - 1)}
+            >
+              ← Previous
+            </button>
           )}
 
           {spread < spreads.length - 1 ? (
             <button
-  type="button"
-  onClick={() => setSpread(spread + 1)}
-  disabled={!isCurrentSpreadValid()}
-  className={!isCurrentSpreadValid() ? "disabled" : ""}
->
-  Next →
-</button>
+              type="button"
+              onClick={() => setSpread(spread + 1)}
+              disabled={!isCurrentSpreadValid()}
+              className={!isCurrentSpreadValid() ? "disabled" : ""}
+            >
+              Next →
+            </button>
 
           ) : (
             <button
-  type="submit"
-  disabled={!isCurrentSpreadValid()}
-  
->
-  Register
-</button>
+              type="submit"
+              disabled={!isCurrentSpreadValid()}
+
+            >
+              Register
+            </button>
           )}
         </div>
       </form>

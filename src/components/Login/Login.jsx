@@ -13,6 +13,7 @@ import { jwtDecode } from 'jwt-decode'
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -96,22 +97,33 @@ function Login() {
         />
 
         <label>Password</label>
-        <input
-          type="password"
-          placeholder="Enter Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+
+        <div className="password-wrapper">
+          <input
+            type={showPassword ? "text" : "password"}
+            placeholder="Enter Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+
+          <span
+            className="toggle-password"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? "Hide" : "Show"}
+          </span>
+        </div>
 
         {error && <p className="error-text">{error}</p>}
 
         <button type="submit">Login</button>
 
-        <GoogleLogin
+
+        {/* <GoogleLogin
           className="google-button"
           onSuccess={(handleGoogleLogin)}
 
-          onError={(err) => { console.log("login failed") }} />
+          onError={(err) => { console.log("login failed") }} /> */}
 
         <p className="register-text">
           Don’t have an account?{" "}
