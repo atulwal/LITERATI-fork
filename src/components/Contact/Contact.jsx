@@ -58,7 +58,7 @@ const Contact = () => {
   </div>
           )}
 
-            <h2>Contact</h2>
+            <h2>Contact Us</h2>
               <form ref={form} className='contact-form' onSubmit={sendEmail}>
                 <h3>Send us a message</h3>
                 <div className='input-box'>
