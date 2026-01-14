@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Header.css";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.svg";
+import PublicLeaderboard from "../Dashboard/PublicLB";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ const Header = () => {
         </Link>
 
         <nav className={`nav ${menuOpen ? "active" : ""}`}>
+          <Link to="/public_leaderboard" >Leaderboard</Link>
           <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
           <a href="#events" onClick={(e) => {toggleEvents(e); setMenuOpen(false);}}>
             Events
