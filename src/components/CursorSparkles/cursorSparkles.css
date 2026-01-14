@@ -1,0 +1,25 @@
+#sparkle-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.sparkle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 220, 255, 0.9);
+  box-shadow: 0 0 8px rgba(255, 200, 255, 0.8);
+  animation: sparkle-fade 0.8s ease-out forwards;
+}
+
+@keyframes sparkle-fade {
+  from {
+    transform: scale(1) translate(0, 0);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.3) translate(-8px, 12px);
+    opacity: 0;
+  }
+}

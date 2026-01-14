@@ -13,6 +13,7 @@ import Leaderboard from "./components/Profile/Leaderboard";
 import Dashboard from "./pages/Dashboard.jsx";
 import Scoreboard from "./components/Dashboard/Scoreboard";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import CursorSparkles from "./components/CursorSparkles/CursorSparkles.jsx";
 import Admin from "./pages/admin.jsx";
 
 const AnimatedRoutes = () => {
@@ -58,6 +59,7 @@ function App() {
 
   return (
     <Router>
+      <CursorSparkles />
       <AudioPlayer />
 
       <div className="fireflies-container">
