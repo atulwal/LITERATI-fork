@@ -14,6 +14,7 @@ import Dashboard from "./pages/Dashboard.jsx";
 import Scoreboard from "./components/Dashboard/Scoreboard";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import CursorSparkles from "./components/CursorSparkles/CursorSparkles.jsx";
+import CursorBirds from "./components/CursorBirds/CursorBirds.jsx";
 import publicLB from "./pages/publicLB.jsx";
 import PublicLB from "./components/Dashboard/PublicLB";
 import PublicLeaderboard from "./components/Dashboard/PublicLB.jsx";
@@ -65,6 +66,7 @@ function App() {
   return (
     <Router>
       <CursorSparkles />
+      <CursorBirds />
       <AudioPlayer />
 
       <div className="fireflies-container">

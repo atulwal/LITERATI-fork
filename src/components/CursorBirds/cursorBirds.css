@@ -1,0 +1,17 @@
+body {
+  cursor: none;
+}
+
+.bird-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 28px;
+  height: 28px;
+  pointer-events: none;
+  z-index: 999999;
+
+  transform: translate(-50%, -50%);
+
+  transition: transform 0.06s linear;
+}
