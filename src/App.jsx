@@ -15,6 +15,7 @@ import Scoreboard from "./components/Dashboard/Scoreboard";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import CursorSparkles from "./components/CursorSparkles/CursorSparkles.jsx";
 import publicLB from "./pages/publicLB.jsx";
+import PublicLeaderboard from "./components/Dashboard/public_leaderboard.jsx";
 import Admin from "./pages/admin.jsx";
 
 const AnimatedRoutes = () => {
