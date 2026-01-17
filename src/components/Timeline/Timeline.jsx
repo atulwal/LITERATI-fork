@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import "./Timeline.css";
+import timeline from "../../assets/timeline.mp4";
 
 const data = [
   { event: "Inauguration", date: "Coming Soon" },
@@ -41,9 +42,20 @@ const Timeline = () => {
   }, []);
 
   return (
-    <section id="timeline" className="timeline">
-      <h2>TIMELINE</h2>
+<section id="timeline" className="timeline">
 
+  <video
+    className="timeline-bg-video"
+    src={timeline}
+    autoPlay
+    loop
+    muted
+    playsInline
+  />
+
+  <div className="timeline-overlay"></div>
+
+  <h2>TIMELINE</h2>
       <div className="timeline-wrapper">
         <svg className="curve" viewBox="0 0 100 100" preserveAspectRatio="none">
           <path
