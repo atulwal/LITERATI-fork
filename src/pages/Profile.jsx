@@ -141,7 +141,7 @@ const Profile = () => {
             <h2>{selectedEvent.title}</h2>
             <p>{selectedEvent.description}</p>
 
-            <button className="register-btn">
+            <button className="register-btn-2">
               Click here to register in this
             </button>
           </div>
