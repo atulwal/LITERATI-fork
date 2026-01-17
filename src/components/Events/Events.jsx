@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Events.css";
+import events from "../../assets/events.mp4";
 import { Mic, BookOpen, PenTool, Earth, Drum, X, Sparkles } from "lucide-react";
 
 const eventsData = [
@@ -43,12 +44,13 @@ const funQuestsData = [
 
 const sideQuestsData = [
   { title: "Essay Writing", desc: "A focused literary quest where ideas flow with depth and structure. Participants explore themes thoughtfully, crafting essays that reflect clarity, originality, and perspective." },
-  { title: "Poem Writing", desc: "" },
+  { title: "The Literary Marathon", desc: "" },
   { title: "Debate (Rebuttal)", desc: "A battlefield of words where logic meets confidence. Defend your stance and counter opponents with sharp rebuttals in this intellectually charged contest." },
   { title: "Quiz", desc: "A fast-paced challenge testing accuracy, speed, and presence of mind. From literature to pop culture, every question keeps you on your toes." },
   { title: "Literary Scavenger Hunt / Scavenger Hunt", desc: "Adventure awaits at every turn. Solve puzzles, chase clues, and claim the prize." },
   { title: "The Murder Mystery", desc: "Who is the culprit? Only your detective skills can crack the case." },
 ];
+
 
 const Events = () => {
   const [activeQuestType, setActiveQuestType] = useState(null);
@@ -57,8 +59,17 @@ const Events = () => {
 
   return (
     <section id="events" className="events">
+       <video
+    className="events-bg-video"
+    src={events}
+    autoPlay
+    loop
+    muted
+    playsInline
+    preload="auto"
+  />
+      <div className="events-overlay"></div>
       <div className="floating-particles"></div>
-
       <div className="events-content">
         <h2 className="events-title">
           Events
