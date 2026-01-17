@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Hero.css";
-import jungle from "../../assets/jungle.mp4";
+import jungle from "../../assets/jungle.png";
 import logo from "../../assets/logo.svg";
 
 const Hero = () => {
@@ -30,17 +30,8 @@ const Hero = () => {
     <section
       className={`hero ${exiting ? "exiting" : ""}`}
       id="hero"
+      style={{ backgroundImage: `url(${jungle})` }}
     >
-        <video
-        className="hero-bg-video"
-        src={jungle}
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-      />
-     <div className="hero-overlay" />
       <div className="hero-content">
         <div className="hero-panel">
           <img src={logo} alt="LitFest 2026" className="hero-logo" />
@@ -61,4 +52,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
