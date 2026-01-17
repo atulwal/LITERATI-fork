@@ -22,15 +22,28 @@ const Header = () => {
         </Link>
 
         <nav className={`nav ${menuOpen ? "active" : ""}`}>
-          <Link to="/public_leaderboard" >Leaderboard</Link>
+          <a href="#hero" onClick={() => setMenuOpen(false)}>Home</a>
           <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
-          <a href="#events" onClick={(e) => {toggleEvents(e); setMenuOpen(false);}}>
+          <a href="#events" 
+          onClick={(e) => {
+            setMenuOpen(false);
+            setTimeout(() => {
+              
+              toggleEvents(e); 
+            }, 10);
+          }}>
             Events
             </a>   
+          <a href="#speakers" onClick={() => setMenuOpen(false)}>Speakers</a>
+          <a href="#timeline" onClick={() => setMenuOpen(false)}>Timeline</a>
+          <a href="#sponsors" onClick={() => setMenuOpen(false)}>Our Sponsors</a>
+          <a href="#gallery" onClick={() => setMenuOpen(false)}>Our Team</a>
+          <a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
+          <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
+
           <Link to="/adminlogin" onClick={() => setMenuOpen(false)}>
           Enter As Admin
           </Link>
-          <a href="#timeline" onClick={() => setMenuOpen(false)}>Timeline</a>
           <a 
           className="register-btn"
           onClick={() => {
