@@ -1,5 +1,6 @@
 import React from "react";
 import "./Gallery.css";
+import teambg from "../../assets/teambg.mp4";
 
 const photos = import.meta.glob("../../assets/images/*.{jpg,jpeg,png,webp}", { 
   eager: true, 
@@ -102,6 +103,18 @@ const headCoordinatorData = [
 const Gallery = () => {
   return (
     <section id="gallery" className="gallery">
+        <video
+          className="gallery-bg-video"
+          src={teambg}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+        />
+      
+        <div className="gallery-overlay"> </div>
+       <div className="gallery-content">
       <h2>Meet The Team</h2>
 
       <h3>Our Faculty</h3>
@@ -138,6 +151,7 @@ const Gallery = () => {
           </div>
         ))}
       </div>
+    </div> 
     </section>
   );
 };
