@@ -312,3 +312,18 @@ body {
   transform: translateY(-2px) scale(1.02);
   box-shadow: 0 10px 30px rgba(255, 77, 77, 0.5);
 }
+
+.apply-card h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #eafff6;
+  margin-bottom: 6px;
+}
+
+.apply-card .event-code {
+  display: block;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: #9fffcf;
+  opacity: 0.9;
+}
