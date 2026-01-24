@@ -16,9 +16,9 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.error('MongoDB Error:', err));
 
-app.use("/api/auth", authRoutes);
-app.use("/api/user", userRoutes);
-app.use("/api/admin", adminRoutes);
+app.use('/api/auth', import('./routes/auth'));
+app.use('/api/users', import('./routes/user'));   
+app.use('/api/admin', import('./routes/admin'));
 
 
 app.get('/', (req, res) => {
