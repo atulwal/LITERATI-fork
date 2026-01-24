@@ -5,19 +5,19 @@ import { Mic, BookOpen, PenTool, Earth, Drum, X, Sparkles } from "lucide-react";
 
 const eventsData = [
   {
-    name: "Knowledge Trivia",
-    desc: "An adventure of facts and surprises awaits. Test your literary awareness, pop-culture knowledge, and quick thinking in this fast-paced challenge.",
+    name: "Poetry Slam",
+    desc: "",
     icon: <BookOpen size={36} strokeWidth={1.8} />
   },
   {
-    name: "Wit & Expression – The Pensieve Pitch:",
-    desc: "Inspired by the Pensieve, this round challenges you to present ideas with clarity, confidence, and impact.",
-    icon: <Mic size={36} strokeWidth={1.8} />
+    name: "Storyforge Championship",
+    desc: "",
+    icon: <PenTool size={36} strokeWidth={1.8} />
   },
   {
-    name: "Creativity – Once Upon a Time…",
-    desc: "Craft the story of your favourite novel in your own unique style. This round tests imagination, originality, and narrative flow, where creativity becomes your strongest spell.",
-    icon: <PenTool size={36} strokeWidth={1.8} />
+    name: "Tube Trolls 5.0",
+    desc: "",
+    icon: <Mic size={36} strokeWidth={1.8} />
   },
   {
     name: "Finale Event – Aircrash",
@@ -34,12 +34,9 @@ const eventsData = [
 const funQuestsData = [
   { title: "Jenga", desc: "A game of strategy and steady hands. Carefully pick your block and place it on top to build the tower, or watch it crash down." },
   { title: "Chess", desc: "Step into the tall grass for a game of strategy, a breathtaking struggle for dominance in the animal kingdom. The checkmate is not just a win, it is claiming your territory in the wild." },
-  { title: "Snake 'N Ladders", desc: "Navigate the jungle, you might find a hidden trail to the top or a slithering surprise that sends you back to the start." },
   { title: "Scrabble", desc: "Here every letter is a footprint and every word is a discovery. In this jungle, the loudest roar does not win, the sharpest vocabulary does." },
-  { title: "Movie Eve", desc: "Lights, camera, relaxation. Unwind with friends and films under one cozy roof." },
-  { title: "Chair Race", desc: "Tired of exploring the jungle? Take a seat, if you can. Hear the sound of the drums and react fast to claim the throne of the jungle." },
   { title: "Dumb Charades", desc: "Gestures, giggles, and wild guesses. The ultimate party game." },
-  { title: "HANGMAN", desc: "Only your vocabulary can rescue the man hanging on the rope bridge before it collapses. Guess the word correctly and avoid the wet splashdown." },
+  { title: "Hangman", desc: "Only your vocabulary can rescue the man hanging on the rope bridge before it collapses. Guess the word correctly and avoid the wet splashdown." },
 ];
 
 const sideQuestsData = [
@@ -47,8 +44,6 @@ const sideQuestsData = [
   { title: "The Literary Marathon", desc: "" },
   { title: "Debate (Rebuttal)", desc: "A battlefield of words where logic meets confidence. Defend your stance and counter opponents with sharp rebuttals in this intellectually charged contest." },
   { title: "Quiz", desc: "A fast-paced challenge testing accuracy, speed, and presence of mind. From literature to pop culture, every question keeps you on your toes." },
-  { title: "Literary Scavenger Hunt / Scavenger Hunt", desc: "Adventure awaits at every turn. Solve puzzles, chase clues, and claim the prize." },
-  { title: "The Murder Mystery", desc: "Who is the culprit? Only your detective skills can crack the case." },
 ];
 
 
